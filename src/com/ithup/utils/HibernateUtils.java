@@ -14,7 +14,9 @@ public class HibernateUtils {
 	public static final SessionFactory FACTORY;
 	//编写静态代码块
 	static{
+		//加载xml配置文件
 		CONFIGURATION = new Configuration().configure();
+		//构造工厂
 		FACTORY = CONFIGURATION.buildSessionFactory();
 	}
 	
@@ -24,5 +26,12 @@ public class HibernateUtils {
 	 */
 	public static Session getSession(){
 		return FACTORY.openSession();
+	}
+	/**
+	 * // 从ThreadLocal类中获取到session的对象
+	 * @return
+	 */
+	public static Session getCurrentSession(){
+		return FACTORY.getCurrentSession();
 	}
 }

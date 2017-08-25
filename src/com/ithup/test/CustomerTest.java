@@ -1,4 +1,4 @@
-package com.ithup.test;
+/*package com.ithup.test;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,12 +9,12 @@ import org.junit.Test;
 import com.ithup.domain.Customer;
 import com.ithup.utils.HibernateUtils;
 
-/**
+*//**
  * øÕªß≤‚ ‘¿‡
  * 
  * @author acer
  *
- */
+ *//*
 public class CustomerTest {
 	@Test
 	public void testSave() {
@@ -55,3 +55,4 @@ public class CustomerTest {
 		session.close();
 	}
 }
+*/
