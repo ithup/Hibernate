@@ -14,6 +14,87 @@ import com.ithup.utils.HibernateUtils;
  *
  */
 public class CustomerLinkman {
+	
+	/**
+	 * 级联保存联系人：
+	 */
+	@Test
+	public void saveLinkmanAndCustomer(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		Customer customer = session.get(Customer.class, 1L);
+		Linkman linkman = new Linkman();
+		linkman.setLkm_name("周伯通");
+		linkman.setCustomer(customer);
+		session.save(linkman);
+		tr.commit();
+	}
+	
+	
+	
+	/**
+	 * cascade和inverse的区别:
+	 * 		总结：一的一方放弃外键维护、多的一方级联保存
+	 */
+	@Test
+	public void cascadeAndInverse(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		//创建客户对象
+		Customer customer = new Customer();
+		customer.setCust_name("光头强1");
+		//创建联系人
+		Linkman linkman = new Linkman();
+		linkman.setLkm_name("熊大1");
+		Linkman linkman1 = new Linkman();
+		linkman1.setLkm_name("熊二1");
+		//级联保存:保存客户关联联系人
+		//关联联系人
+		/*customer.getLinkMan().add(linkman);
+		customer.getLinkMan().add(linkman1);
+		//保存用户
+		session.save(customer);*/
+		//总结：一的一方放弃外键维护、多的一方级联保存
+		//联系人级联保存
+		linkman.setCustomer(customer);
+		linkman1.setCustomer(customer);
+		//保存联系人
+		session.save(linkman);
+		session.save(linkman1);
+		tr.commit();
+	}
+	
+	
+	@Test
+	public void customerLinkman(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		Customer customer = session.get(Customer.class, 2L);
+		Linkman linkman = session.get(Linkman.class, 1L);
+		//使用双向关联
+		customer.getLinkMan().add(linkman);
+		linkman.setCustomer(customer);
+		//自动更新
+		tr.commit();
+	}
+	
+	
+	@Test
+	public void deleteCustomerLinkman4(){
+		/**
+		 * 解除关系：从集合中删除联系人
+		 */
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		//先获得用户
+		Customer customer = session.get(Customer.class, 1L);
+		//再获得要解除关系的联系人
+		Linkman linkman = session.get(Linkman.class, 1L);
+		//customer用户解除linkman联系人的关系
+		customer.getLinkMan().remove(linkman);//级联删除
+		tr.commit();
+	}
+	
 	@Test
 	public void deleteCustomerLinkman3(){
 		Session session = HibernateUtils.getCurrentSession();
@@ -109,18 +190,18 @@ public class CustomerLinkman {
 		Transaction tr = session.beginTransaction();
 		//创建客户对象
 		Customer customer = new Customer();
-		customer.setCust_name("光头强1");
+		customer.setCust_name("光头强5");
 		//创建联系人
 		Linkman linkman = new Linkman();
 		linkman.setLkm_name("熊大1");
-		Linkman linkman1 = new Linkman();
-		linkman1.setLkm_name("熊二1");
+		/*Linkman linkman1 = new Linkman();
+		linkman1.setLkm_name("熊二1");*/
 		//创建单向关联操作
 		linkman.setCustomer(customer);
-		linkman1.setCustomer(customer);
+		//linkman1.setCustomer(customer);
 		//保存用户
 		session.save(linkman);
-		session.save(linkman1);
+		//session.save(linkman1);
 		//提交事务
 		tr.commit();
 		//释放资源

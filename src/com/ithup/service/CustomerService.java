@@ -36,5 +36,6 @@ public class CustomerService {
 	public List<Customer> findAllCustomer(String custName) {
 		return customerDao.findAllCustomer(custName);
 	}
+
 	
 }

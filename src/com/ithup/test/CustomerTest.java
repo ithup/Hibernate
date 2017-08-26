@@ -1,4 +1,6 @@
-/*package com.ithup.test;
+package com.ithup.test;
+
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,17 +8,18 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
+import com.ithup.dao.CustomerDao;
 import com.ithup.domain.Customer;
 import com.ithup.utils.HibernateUtils;
 
-*//**
+/**
  * 客户测试类
  * 
  * @author acer
  *
- *//*
+ */
 public class CustomerTest {
-	@Test
+	/*@Test
 	public void testSave() {
 		// 加载配置文件
 		Configuration config = new Configuration().configure();
@@ -53,6 +56,18 @@ public class CustomerTest {
 		// 提交事务
 		tr.commit();
 		session.close();
+	}*/
+	
+	/**
+	 * 客户查询测试
+	 */
+	@Test
+	public void testFindAllCustomer(){
+		CustomerDao customerDao = new CustomerDao();
+		List<Customer> list = customerDao.findAllCustomer("强");
+		for (Customer customer : list) {
+			System.out.println(customer.getLinkMan());
+		}
 	}
 }
-*/
+

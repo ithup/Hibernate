@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/linkmanServlet?method=addsubmit"
+		action="${pageContext.request.contextPath }/addLinkmanServlet"
 		method=post>
 		
 
@@ -48,30 +48,60 @@
 						<TABLE cellSpacing=0 cellPadding=5  border=0>
 							<tr>
 								<td>所属客户：</td>
-								<td colspan="3"><input type="text" name="custId" style="WIDTH: 180px"/></td>
+								<td colspan="3">
+									<select name="cust_id">
+											<c:forEach items="${list}" var="customer">
+												<option value="${customer.cust_id}">${customer.cust_name}</option>
+											</c:forEach>
+									</select>
+								</td>
 							</tr>
 							<TR>
 								<td>联系人名称：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmName">
+														style="WIDTH: 180px" maxLength=50 name="lkm_name">
 								</td>
 								<td>联系人性别：</td>
 								<td>
-								<input type="radio" value="1" name="lkmGender">男
-								<input type="radio" value="2" name="lkmGender">女
+								<input type="radio" value="男" name="lkm_gender" checked="checked">男
+								<input type="radio" value="女" name="lkm_gender">女
 								</td>
 							</TR>
 							<TR>
 								<td>联系人办公电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmPhone">
+														style="WIDTH: 180px" maxLength=50 name="lkm_phone">
 								</td>
 								<td>联系人手机 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmMobile">
+														style="WIDTH: 180px" maxLength=50 name="lkm_mobile">
+								</td>
+							</TR>
+							<TR>
+								<td>联系人邮箱 ：</td>
+								<td>
+								<INPUT class=textbox id=sChannel2
+														style="WIDTH: 180px" maxLength=50 name="lkm_email">
+								</td>
+								<td>联系人qq ：</td>
+								<td>
+								<INPUT class=textbox id=sChannel2
+														style="WIDTH: 180px" maxLength=50 name="lkm_qq">
+								</td>
+							</TR>
+							<TR>
+								<td>联系人职位 ：</td>
+								<td>
+								<INPUT class=textbox id=sChannel2
+														style="WIDTH: 180px" maxLength=50 name="lkm_position">
+								</td>
+								<td>联系人备注 ：</td>
+								<td>
+								<INPUT class=textbox id=sChannel2
+														style="WIDTH: 180px" maxLength=50 name="lkm_memo">
 								</td>
 							</TR>
 							<tr>

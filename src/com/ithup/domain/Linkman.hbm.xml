@@ -23,6 +23,6 @@
 				配置多对一：
 					多个联系人对应一个客户
 			 -->
-			 <many-to-one name="customer" class="com.ithup.domain.Customer" column="lkm_cust_id" cascade="save-update,delete"/>
+			 <many-to-one name="customer" class="com.ithup.domain.Customer" column="lkm_cust_id" cascade="save-update"/>
 		</class>
 </hibernate-mapping>

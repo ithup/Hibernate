@@ -10,7 +10,7 @@
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.min.js"></script>
-<SCRIPT language=javascript>
+<!-- <SCRIPT language=javascript>
 	function to_page(page){
 		if(page){
 			$("#page").val(page);
@@ -18,7 +18,7 @@
 		document.customerForm.submit();
 		
 	}
-</SCRIPT>
+</SCRIPT> -->
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
@@ -65,7 +65,7 @@
 													<TD><INPUT class=textbox id=sChannel2
 														style="WIDTH: 80px" maxLength=50 name="custName"></TD>
 													
-													<TD><INPUT class=button id=sButton2 type=submit
+													<TD><INPUT class=button id=sButton2 type="submit"
 														value=" 筛选 " name=sButton2></TD>
 												</TR>
 											</TBODY>
@@ -84,7 +84,7 @@
 													<TD>客户名称</TD>
 													<TD>客户级别</TD>
 													<TD>客户来源</TD>
-													<TD>联系人</TD>
+													<!-- <TD>联系人</TD> -->
 													<TD>电话</TD>
 													<TD>手机</TD>
 													<TD>操作</TD>
@@ -95,7 +95,7 @@
 													<TD>${customer.cust_name }</TD>
 													<TD>${customer.cust_level }</TD>
 													<TD>${customer.cust_source }</TD>
-													<TD>${customer.cust_linkman }</TD>
+													<%-- <TD>${customer.linkMan }</TD> --%>
 													<TD>${customer.cust_phone }</TD>
 													<TD>${customer.cust_mobile }</TD>
 													<TD>

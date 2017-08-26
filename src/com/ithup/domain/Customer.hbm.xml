@@ -20,8 +20,10 @@
 		<property name="cust_level" column="cust_level"></property>
 		<property name="cust_phone" column="cust_phone"></property>
 		<property name="cust_mobile" column="cust_mobile"></property>
-		<!-- 配置一对多： 一个客户对应多个联系人 -->
-		<set name="linkMan" cascade="delete">
+		<!-- 配置一对多： 一个客户对应多个联系人 
+				inverse="true":放弃外键维护
+		-->
+		<set name="linkMan"  inverse="true">
 			<key column="lkm_cust_id" />
 			<one-to-many class="com.ithup.domain.Linkman" />
 		</set>

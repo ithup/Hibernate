@@ -78,4 +78,14 @@ public class CustomerDao {
 		return list;
 	}
 
+	
+	/**
+	 * 根据客户id查询客户信息
+	 * @param cust_id
+	 */
+	public Customer findCustomerById(Long cust_id) {
+		Session session = HibernateUtils.getCurrentSession();
+		return  session.get(Customer.class, cust_id);
+	}
+
 }
