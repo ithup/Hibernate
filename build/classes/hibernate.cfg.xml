@@ -36,5 +36,7 @@
 		  -->
 		 <mapping resource="com/ithup/domain/Customer.hbm.xml"/>
 		 <mapping resource="com/ithup/domain/Linkman.hbm.xml"/>
+		 <mapping resource="com/ithup/domain/User.hbm.xml"/>
+		 <mapping resource="com/ithup/domain/Role.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
