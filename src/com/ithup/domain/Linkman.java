@@ -109,4 +109,11 @@ public class Linkman {
 		this.lkm_memo = lkm_memo;
 	}
 
+	@Override
+	public String toString() {
+		return "Linkman [lkm_id=" + lkm_id + ", lkm_name=" + lkm_name + ", lkm_gender=" + lkm_gender + ", lkm_phone="
+				+ lkm_phone + ", lkm_mobile=" + lkm_mobile + ", lkm_email=" + lkm_email + ", lkm_qq=" + lkm_qq
+				+ ", lkm_position=" + lkm_position + ", lkm_memo=" + lkm_memo + "]";
+	}
+
 }
