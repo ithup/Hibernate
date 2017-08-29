@@ -1,5 +1,6 @@
 package com.ithup.test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +19,57 @@ import com.ithup.utils.HibernateUtils;
  *
  */
 public class HQLDemo {
+	/**
+	 * 聚合函数：count(),sum(),max(),min(),avg();
+	 */
+	@Test
+	public void run8(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		//查询所有联系人的数量
+		//List<Number> list = session.createQuery("select sum(lkm_id) from Linkman").list();
+		//List<Number> list = session.createQuery("select avg(lkm_id) from Linkman").list();
+		//List<Number> list = session.createQuery("select max(lkm_id) from Linkman").list();
+		List<Number> list = session.createQuery("select min(lkm_id) from Linkman").list();
+		//Number number = list.get(0);
+		//通过下标值取值
+		int value = list.get(0).intValue();
+		System.out.println(value);
+		tr.commit();
+	}
+	
+	/**
+	 * 聚合函数：count(),sum(),max(),min(),avg();
+	 */
+	@Test
+	public void run7(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		//查询所有联系人的数量
+		List<Number> list = session.createQuery("select count(*) from Linkman").list();
+		//Number number = list.get(0);
+		//通过下标值取值
+		int value = list.get(0).intValue();
+		System.out.println(value);
+		tr.commit();
+	}
+	
+	/**
+	 * 投影查询：只查询几个字段，
+	 */
+	@Test
+	public void run6(){
+		Session session = HibernateUtils.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		//创建HQL查询接口
+		Query query = session.createQuery("select lkm_name,lkm_gender from Linkman");
+		List<Object[]> list = query.list();
+		for (Object[] objects : list) {
+			System.out.println(Arrays.toString(objects));
+		}
+		tr.commit();
+	}
+	
 	
 	
 	/**
